@@ -1,0 +1,16 @@
+{
+	"States": ["q0", "q1"],
+	"InputAlphabet": ["0", "1"],
+	"TapeAlphabet": ["0", "1", "B"],
+	
+	"Tapes": 3,
+	"_comment": "specifying Tapes means this Turing Machine is a multitape TM",
+	
+	"Transitions": [
+		{"from": "q0", "read": ["0", "1", "B"], "to": "q1", "write": ["1", "0", "B"], "direction": ["left", "right", "stay"]},
+		{"from": "q1", "read": ["1", "0", "B"], "to": "q0", "write": ["0", "1", "B"], "direction": ["right", "stay", "left"]}
+	],
+	"StartState": "q0",
+	"Blank": "B",
+	"FinalStates": ["q1"]
+}

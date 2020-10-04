@@ -1,0 +1,12 @@
+{
+	"States": ["q0", "q1"],
+	"InputAlphabet": ["0", "1"],
+	"TapeAlphabet": ["0", "1", "B"],
+	"Transitions": [
+		{"from": "q0", "read": "0", "to": "q1", "write": "1", "direction": "left"},
+		{"from": "q1", "read": "1", "to": "q0", "write": "0", "direction": "right"}
+	],
+	"StartState": "q0",
+	"Blank": "B",
+	"FinalStates": ["q1"]
+}

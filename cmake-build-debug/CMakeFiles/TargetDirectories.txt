@@ -1,0 +1,3 @@
+/mnt/c/Users/Phili/Documents/Universiteit/20-21/MnB/indiv/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/Phili/Documents/Universiteit/20-21/MnB/indiv/cmake-build-debug/CMakeFiles/indiv.dir
+/mnt/c/Users/Phili/Documents/Universiteit/20-21/MnB/indiv/cmake-build-debug/CMakeFiles/edit_cache.dir
