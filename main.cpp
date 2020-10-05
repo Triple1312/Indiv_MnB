@@ -1,9 +1,12 @@
 #include <iostream>
 
-#include "src/TM.h"
+#include "src/CFG.h"
+#include "src/CYK.h"
+#include <fstream>
 
 int main() {
-
-  std::cout << "Hello, World!" << std::endl;
-  return 0;
+   std::ifstream file;
+   file.open("examples/CFG.json");
+   CFG cfg(file);
+   CYK cyk(cfg, "baaba");
 }

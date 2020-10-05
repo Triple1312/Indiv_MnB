@@ -1,5 +1,5 @@
 //
-// Created by Phili on 02/10/2020.
+// Created by Phili
 //
 
 #ifndef INDIV_SRC_CYK_H_
@@ -12,19 +12,19 @@
 
 #include "CFG.h"
 
-typedef std::vector<std::vector<std::string>> table_str;
-
 class CYK {
 
   const CFG &G;
 
-  table_str table;
+  std::vector<std::vector<std::vector<std::string>>> table {{{}}};
 
   std::string input;
 
-  std::map<std::string, std::vector<std::string>> cont;
+  std::map<std::string, std::vector<std::string>> productions;
+
 
   //static std::map<std::string, std::vector<std::string>> Split2String(std::string &in);
+  void MakeProductions();
 
  public:
 
@@ -35,6 +35,12 @@ class CYK {
   static std::vector<std::pair<std::string, std::string>> Split(const std::string& in);
 
   std::vector<std::string> Prod(const std::vector<std::string> &v1, const std::vector<std::string> &v2);
+
+  void SplitToCount(std::string input, std::vector<std::string> &add, int count);
+
+
+
+
 };
 
 #endif //INDIV_SRC_CYK_H_
