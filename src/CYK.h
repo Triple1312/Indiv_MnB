@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <fstream>
 
+
 #include "CFG.h"
 
 class CYK {

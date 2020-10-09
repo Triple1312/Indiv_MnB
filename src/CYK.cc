@@ -129,6 +129,7 @@ void CYK::MakeProductions() {
 
 void CYK::ToHTML() {
    std::ofstream out_file;
+   std::stringstream idk;
    out_file.open("CYK.html");
    out_file.clear();
    out_file << "<!DOCTYPE html>\n"
@@ -156,11 +157,13 @@ void CYK::ToHTML() {
          for (auto m : table[table.size() -1 -i][j]) {
             temp_str += m += ",";
          }
-         //temp_str.erase(temp_str.end());
 
-         out_file << "<td>" << temp_str << "</td>\n";
+         temp_str.pop_back(); // alsk dit gebruik crasht het soms
+
+
+         out_file << "<td>" << temp_str.c_str() << "</td>" << std::endl;
       }
-      out_file << "</tr\n>";
+      out_file << "</tr>" << std::endl;
    }
 
    out_file << "<tr>\n";

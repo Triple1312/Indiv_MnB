@@ -8,6 +8,6 @@ int main() {
    std::ifstream file;
    file.open("examples/CFG.json");
    CFG cfg(file);
-   CYK cyk(cfg, "baaba");
+   CYK cyk(cfg, "abbc");
    cyk.ToHTML();
 }
