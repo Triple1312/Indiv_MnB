@@ -6,17 +6,27 @@
 
 CYK::CYK(CFG &g, std::string input) : G(g) {
   std::map<std::string, std::vector<std::string>> rip;
+  //this->input = input;
 
   /// dit blokje berekent de Rules voor de basis chars ///
   std::vector<std::string> temp; // input char
   MakeProductions();
   SplitToCount(input, temp, 1);
+
+  /// preallocation so I can input in subvectors without pushing a vector ///
+  this->table.resize(input.size() +1 );
+  for (int i = 0; i < input.size()+1; i++) {
+     table[i].resize(input.size());
+  }
   //this->table[0] = temp;
-  for (auto l = 0; l < temp.size()-1; l++) {
+  for (auto l = 0; l < temp.size(); l++) {
+     //table[1][l] = {};
      this->table[0][l].push_back(temp[l]);
     rip[temp[l]] = FromRule(temp[l]);
     auto hi = rip[temp[l]];
-    this->table[1][l]= hi;
+     //this->table[1][l];
+    this->table[1][l] = hi;
+    std::cout << "idk";
   }
 
   this->input = input;
@@ -25,7 +35,12 @@ CYK::CYK(CFG &g, std::string input) : G(g) {
     SplitToCount(input, temp, i);
     for ( auto j = 0; j < temp.size(); j++) {
       for ( auto k : Split(temp[j]) ) {
-        rip[temp[j]] = Prod(rip[k.first], rip[k.second]);
+         for (auto m : Prod(rip[k.first], rip[k.second])) {
+            rip[temp[j]].emplace_back(m);
+         }
+         //https://stackoverflow.com/questions/1041620/whats-the-most-efficient-way-to-erase-duplicates-and-sort-a-vector
+         sort( rip[temp[j]].begin(), rip[temp[j]].end() );
+         rip[temp[j]].erase( unique( rip[temp[j]].begin(), rip[temp[j]].end() ), rip[temp[j]].end() );
         this->table[i][j] = rip[temp[j]];
       }
     }
@@ -43,7 +58,7 @@ void CYK::SplitToCount(std::string input, std::vector<std::string>& add, int cou
     str += input[i];
   }
   add.push_back(str);
-  if (str[str.size()-1] == input[input.size()-1] ){
+  if (str.size()-1 == input.size()-1 ){
     return;
   }
   else {
@@ -79,13 +94,19 @@ std::vector<std::string> CYK::FromRule(const std::string& in) {
 }
 
 std::vector<std::string> CYK::Prod(const std::vector<std::string>& v1, const std::vector<std::string>& v2) {
-  std::vector<std::string> temp;
+  std::vector<std::string> vec;
   for (const auto& i : v1 ) {
     for ( const auto& j : v2 ) {
-      temp.emplace_back(i+j);
+       for ( auto k : this->productions) {
+          for (auto l : k.second) {
+             if (l == i+j) {
+                vec.emplace_back(k.first);
+             }
+          }
+       }
     }
   }
-  return temp;
+  return vec;
 }
 
 inline std::string RemSpaces(std::string &in) {

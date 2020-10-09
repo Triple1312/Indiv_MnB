@@ -10,4 +10,5 @@ set(TM src/TM.cc src/TM.h src/State.cc src/State.h src/CYK.cc src/CYK.h)
 
 include_directories(libs)
 
+
 add_executable(indiv ${Libs} main.cpp ${TM} src/CYK.cc src/CYK.h src/CFG.cc src/CFG.h libs/PPP.hh)

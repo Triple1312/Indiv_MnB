@@ -38,9 +38,7 @@ class CYK {
 
   void SplitToCount(std::string input, std::vector<std::string> &add, int count);
 
-
-
-
+  bool CheckIfValue(std::string value);
 };
 
 #endif //INDIV_SRC_CYK_H_
