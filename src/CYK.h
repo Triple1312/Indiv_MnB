@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <fstream>
 
 #include "CFG.h"
 
@@ -26,6 +27,8 @@ class CYK {
   //static std::map<std::string, std::vector<std::string>> Split2String(std::string &in);
   void MakeProductions();
 
+
+
  public:
 
   CYK(CFG &g, std::string);
@@ -38,7 +41,9 @@ class CYK {
 
   void SplitToCount(std::string input, std::vector<std::string> &add, int count);
 
-  bool CheckIfValue(std::string value);
+  void ToHTML();
+
+  //bool CheckIfValue(std::string value);
 };
 
 #endif //INDIV_SRC_CYK_H_

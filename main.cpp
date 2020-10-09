@@ -9,4 +9,5 @@ int main() {
    file.open("examples/CFG.json");
    CFG cfg(file);
    CYK cyk(cfg, "baaba");
+   cyk.ToHTML();
 }

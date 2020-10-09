@@ -126,3 +126,53 @@ void CYK::MakeProductions() {
       }
    }
 }
+
+void CYK::ToHTML() {
+   std::ofstream out_file;
+   out_file.open("CYK.html");
+   out_file.clear();
+   out_file << "<!DOCTYPE html>\n"
+               "<html>\n"
+               "<head>\n"
+               "    <style>\n"
+               "        table, td{\n"
+               "            border: 1px solid black;\n"
+               "            border-collapse: collapse;\n"
+               "            text-align: center;\n"
+               "        }\n"
+               "        td {\n"
+               "            padding: 20px;\n"
+               "        }\n"
+               "    </style>\n"
+               "</head>\n"
+               "<body> \n"
+               "\n"
+               "<table>\n";
+   for (int i = 0; i < table.size()-1  ; i++) {
+      out_file << "<tr>\n";
+      for (int j = 0; j <= i ; j++) {
+
+         std::string temp_str;
+         for (auto m : table[table.size() -1 -i][j]) {
+            temp_str += m += ",";
+         }
+         //temp_str.erase(temp_str.end());
+
+         out_file << "<td>" << temp_str << "</td>\n";
+      }
+      out_file << "</tr\n>";
+   }
+
+   out_file << "<tr>\n";
+   for (auto i : table[0]) {
+     out_file << "<th>" << i[0] << "</th>\n";
+   }
+   out_file << "</tr>\n";
+
+
+   out_file << "</table>\n"
+               "</body>\n"
+               "</html>";
+   out_file << std::flush;
+   out_file.close();
+}
