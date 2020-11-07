@@ -127,10 +127,10 @@ void CYK::MakeProductions() {
    }
 }
 
-void CYK::ToHTML() {
+void CYK::ToHTML(std::string fil) {
    std::ofstream out_file;
    std::stringstream idk;
-   out_file.open("CYK.html");
+   out_file.open(fil);
    out_file.clear();
    out_file << "<!DOCTYPE html>\n"
                "<html>\n"

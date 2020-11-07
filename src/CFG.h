@@ -25,12 +25,14 @@ class CFG {
 
   std::string start;
 
-  std::map<std::string, std::vector<std::string>> prodctions;
+  std::unordered_map<std::string, std::vector<std::string>> prodctions;
 
  public:
   explicit CFG(std::ifstream &file);
 
   void print();
+
+  void print(std::string file_name);
 
   CFG() = default;
 };

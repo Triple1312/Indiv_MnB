@@ -42,7 +42,7 @@ class CYK {
 
   void SplitToCount(std::string input, std::vector<std::string> &add, int count);
 
-  void ToHTML();
+  void ToHTML(std::string fil = "index.html");
 
   //bool CheckIfValue(std::string value);
 };

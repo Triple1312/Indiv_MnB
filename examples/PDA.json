@@ -1,0 +1,21 @@
+{
+	"States": ["q", "p"],
+	"Alphabet": ["0", "1"],
+	"StackAlphabet": ["X", "Z"],
+	
+	"Transitions": [
+		{"from": "q", "input": "1", "stacktop": "Z", "to": "q", "replacement": ["X", "Z"]},
+		{"from": "q", "input": "1", "stacktop": "X", "to": "q", "replacement": ["X", "X"]},
+		{"from": "q", "input": "0", "stacktop": "X", "to": "p", "replacement": ["X"]},
+		{"from": "q", "input": "e", "stacktop": "X", "to": "q", "replacement": ["e"]},
+		{"from": "p", "input": "1", "stacktop": "X", "to": "p", "replacement": ["e"]},
+		{"from": "p", "input": "0", "stacktop": "Z", "to": "q", "replacement": ["Z"]}
+	],
+	"_comment": "epsilon is literally the empty string (eg. the second transition)",
+	
+	"StartState": "q",
+	"StartStack": "Z",
+	
+	"FinalStates": ["p"],
+	"_comment": "This is optional. When this attribute is not present, accepting is done by empty stack."
+}

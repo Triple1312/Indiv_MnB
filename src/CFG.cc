@@ -38,7 +38,7 @@ void CFG::print() {
   for (auto i : prodctions) {
     std::stringstream os;
     os << i.first << " -> ";
-    std::copy(i.second.begin(), i.second.end()-1, std::ostream_iterator<std::string>(os, "| "));
+    std::copy(i.second.begin(), i.second.end()-1, std::ostream_iterator<std::string>(os, " | "));
 
     if (i.second.size() > 1) {   // or (!v.empty())
       os << *(i.second.end() - 1);
@@ -51,4 +51,20 @@ void CFG::print() {
   }
   std::cout << start.str() << std::endl;
   std::cout << next.str() << std::endl;
+}
+
+void CFG::print(std::string file_name) {
+   std::ofstream file(file_name);
+   //file.open(file_name, std::ios::trunc);
+   for (auto b : this->prodctions["S"]) {
+      file << "S" << " -> " << b << std::endl;
+   }
+
+   for ( auto i : this->prodctions) {
+      if (i.first == "S" ){continue;}
+      for (auto j : i.second) {
+         file << i.first << " -> " << j << std::endl;
+      }
+   }
+   file.close();
 }
