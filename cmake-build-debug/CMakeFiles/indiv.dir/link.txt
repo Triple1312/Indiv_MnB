@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/indiv.dir/main.cpp.o CMakeFiles/indiv.dir/src/TM.cc.o CMakeFiles/indiv.dir/src/State.cc.o CMakeFiles/indiv.dir/src/CYK.cc.o CMakeFiles/indiv.dir/src/CFG.cc.o -o indiv 

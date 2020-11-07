@@ -14,7 +14,9 @@
 #include "json.hpp"
 
 class CFG {
+
   friend class CYK;
+  friend class PDA_CFG;
 
   // als we ervan uitgaan dat een var meerdere chars kunnen zijn //
   std::vector<std::string> vars;
@@ -29,6 +31,8 @@ class CFG {
   explicit CFG(std::ifstream &file);
 
   void print();
+
+  CFG() = default;
 };
 
 #endif  //INDIV_SRC_CFG_H_
