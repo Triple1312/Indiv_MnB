@@ -11,7 +11,7 @@
 #include <fstream>
 #include <sstream>
 
-#include "json.hpp"
+#include "../libs/json.hpp"
 
 class CFG {
 
